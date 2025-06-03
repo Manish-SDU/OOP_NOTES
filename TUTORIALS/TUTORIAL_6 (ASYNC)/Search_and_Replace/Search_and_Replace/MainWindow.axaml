@@ -1,0 +1,23 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="640" d:DesignHeight="400"
+        Width="640" Height="400"
+        x:Class="Search_and_Replace.Search_and_Replace.MainWindow"
+        Title="Search_and_Replace">
+        <StackPanel>
+                <Grid ColumnDefinitions="250 250 Auto" RowDefinitions="Auto Auto">
+                        <Label Grid.Row="0" Grid.Column="0" FontSize="20" Margin="20 10 5 0">Search</Label>
+                        <TextBox Grid.Row="1" Grid.Column="0" FontSize="20" Margin="20 10" Name="TextBoxSearch" />
+                        <Label Grid.Row="0" Grid.Column="1" FontSize="20" Margin="20 10 5 0">Replace</Label>
+                        <TextBox Grid.Row="1" Grid.Column="1" FontSize="20" Margin="20 10" Name="TextBoxReplace"/>
+                        <Button Grid.Row="1" Grid.Column="2" FontSize="20" Margin="-5 10" Click="ReplaceAllHandler">Replace All</Button>
+                </Grid>
+                <TextBox Margin="20" Height="200" MaxLines="24" TextWrapping="Wrap" AcceptsReturn="True" FontSize="14" Name="TextBox"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                        <Button HorizontalAlignment="Center" FontSize="20" Margin="10 0" Click="OpenFileHandler">Open File</Button>
+                        <Button HorizontalAlignment="Center" FontSize="20" Margin="10 0" Click="SaveFileHandler">Save As</Button>
+                </StackPanel>
+        </StackPanel>
+</Window>

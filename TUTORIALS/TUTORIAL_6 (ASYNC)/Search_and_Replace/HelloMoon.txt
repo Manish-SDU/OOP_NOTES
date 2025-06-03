@@ -1,0 +1,12 @@
+public class HelloMoon {
+
+    public HelloMoon() {
+        System.out.println("HelloMoon");
+    }
+
+
+    public static void main(String[] args) {
+        HelloMoon helloMoon = new HelloMoon();
+    }
+}
+
