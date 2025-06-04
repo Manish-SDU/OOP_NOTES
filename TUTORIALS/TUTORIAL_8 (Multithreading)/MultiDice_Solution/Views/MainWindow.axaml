@@ -1,0 +1,33 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:MultiDice.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="MultiDice.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="MultiDice">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+    
+        <StackPanel Background="PapayaWhip">
+            
+            <Border Background="DarkBlue" Margin="0 0 0 10 " CornerRadius="8">
+                <TextBlock Margin="10" FontSize="24" Foreground="White" TextAlignment="Center" Text="Callback" />
+            </Border>
+            <Grid RowDefinitions="Auto Auto" ColumnDefinitions="220 220" HorizontalAlignment="Center">
+                <Image Grid.Row="0" Grid.Column="0"  Margin="20 20" Name="DieImage1" Source="{Binding DieOneImage}"></Image>
+                <Image Grid.Row="0" Grid.Column="1"  Margin="20 20" Name="DieImage2" Source="{Binding DieTwoImage}"></Image>
+            </Grid>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Command="{Binding Start}" Width="80" Margin="20 20" HorizontalAlignment="Center" HorizontalContentAlignment="Center" FontSize="24" Name="ButtonStart" Background="LimeGreen">Start</Button>
+                <Button Command="{Binding Stop}" Width="80" Margin="20 20" HorizontalAlignment="Center" HorizontalContentAlignment="Center" FontSize="24" Name="ButtonStop" Background="OrangeRed">Stop</Button>
+            </StackPanel>
+            <Label Content="{Binding Result}" Margin="0 10" HorizontalAlignment="Center" FontWeight="Bold" FontSize="24" Name="LabelInfo"></Label>
+        </StackPanel>
+</Window>

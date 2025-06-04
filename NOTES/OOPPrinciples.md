@@ -78,3 +78,101 @@ public class Dog : Animal
 Animal myAnimal = new Cat();
 myAnimal.Speak(); // Output: Meow
 ```
+
+## Object Relationships
+
+## 1. Composition
+
+**Definition:** A "whole-part" relationship where the part cannot exist without the whole. When the whole is destroyed, its parts are also destroyed.
+
+**Real-world Example:** A House and its Rooms - Rooms cannot exist without the house.
+
+```csharp
+public class Room
+{
+    public string Name { get; set; }
+    public int SquareFootage { get; set; }
+
+    public Room(string name, int squareFootage)
+    {
+        Name = name;
+        SquareFootage = squareFootage;
+    }
+}
+
+public class House
+{
+    private List<Room> _rooms;
+
+    public House()
+    {
+        _rooms = new List<Room>();
+    }
+
+    public void AddRoom(string name, int squareFootage)
+    {
+        _rooms.Add(new Room(name, squareFootage));
+    }
+
+    // If House is destroyed, all its Rooms cease to exist
+}
+
+// Usage example:
+House myHouse = new House();
+myHouse.AddRoom("Living Room", 300);
+myHouse.AddRoom("Bedroom", 200);
+```
+
+## 2. Aggregation
+
+**Definition:** A "whole-part" relationship where the part can exist independently of the whole. Parts can be shared among multiple wholes.
+
+**Real-world Example:** A Library and Books - Books can exist without a specific library.
+
+```csharp
+public class Book
+{
+    public string Title { get; set; }
+    public string Author { get; set; }
+
+    public Book(string title, string author)
+    {
+        Title = title;
+        Author = author;
+    }
+}
+
+public class Library
+{
+    private List<Book> _books;
+
+    public Library()
+    {
+        _books = new List<Book>();
+    }
+
+    public void AddBook(Book book)
+    {
+        _books.Add(book);
+    }
+
+    public void RemoveBook(Book book)
+    {
+        _books.Remove(book);
+    }
+
+    // Books can exist independently, even if the library is destroyed
+}
+
+// Usage example:
+Book book1 = new Book("Clean Code", "Robert Martin");
+Book book2 = new Book("Design Patterns", "Gang of Four");
+
+Library library1 = new Library();
+library1.AddBook(book1);
+library1.AddBook(book2);
+
+// The same book could be in multiple libraries
+Library library2 = new Library();
+library2.AddBook(book1);
+```
